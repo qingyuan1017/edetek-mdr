@@ -1,0 +1,7 @@
+Run the below command in python console:
+
+
+from flaskr import mdr_schema
+
+from flaskr import db, create_app
+db.db.create_all(app=create_app())

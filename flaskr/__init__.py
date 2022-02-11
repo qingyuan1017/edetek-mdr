@@ -1,5 +1,6 @@
 import os
 from flask import Flask
+from flask_cors import CORS
 
 
 def create_app(test_config=None):
@@ -8,6 +9,7 @@ def create_app(test_config=None):
     app.config.from_mapping(
         SECRET_KEY='dev',
         SQLALCHEMY_DATABASE_URI='mysql://root:123456@localhost:3310/test',
+        # SQLALCHEMY_DATABASE_URI='mysql://root:123456@mysql_db_1:3306/test'
     )
 
     if test_config is None:
@@ -22,6 +24,8 @@ def create_app(test_config=None):
         os.makedirs(app.instance_path)
     except OSError:
         pass
+
+    CORS(app)
 
     # a simple page that says hello
     @app.route('/hello')
