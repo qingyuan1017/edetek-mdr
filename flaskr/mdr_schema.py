@@ -668,268 +668,300 @@ class FormalExpression(db.Model):
     RangeCheck = db.Column(db.Integer, db.ForeignKey('range_check.id'), nullable=False)
 
     # Child Variables
+    # TODO Another datao source to store PCDATA
     PCDATA = db.Column(db.String(200), nullable=False)
 
     # Attribute Variables
     Context = db.Column(db.String(200), nullable=False)
 
 
-# class AdminData(db.Model):
-#
-#     body_keys = ["User", "Location", "SignatureDef"]
-#     attributes_keys = ["StudyOID"]
-#
-#
-# class ODMUser(db.Model):
-#     body_keys = ["LoginName", "DisplayName", "FullName", "FirstName", "LastName", "Organization",
-#                  "Address", "Email", "Picture", "Pager", "Fax", "Phone", "LocationRef",
-#                  "Certificate"]
-#     attributes_keys = ["OID", "UserType"]
-#
-#
-# class ODMLoginName(db.Model):
-#     pass
-#
-#
-# class ODMDisplayName(db.Model):
-#     pass
-#
-#
-# class ODMFullName(db.Model):
-#     pass
-#
-#
-# class ODMFirstName(db.Model):
-#     pass
-#
-#
-# class ODMLastName(db.Model):
-#     pass
-#
-#
-# class ODMOrganization(db.Model):
-#     pass
-#
-#
-# class ODMAddress(db.Model):
-#     body_keys = ["StreetName", "City", "StateProv", "Country", "PostalCode", "OtherText"]
-#     attributes_keys = []
-#
-#
-# class ODMStreetName(db.Model):
-#     pass
-#
-#
-# class ODMCity(db.Model):
-#     pass
-#
-#
-# class ODMStateProv(db.Model):
-#     pass
-#
-#
-# class ODMCountry(db.Model):
-#     pass
-#
-#
-# class ODMPostalCode(db.Model):
-#     pass
-#
-#
-# class ODMOtherText(db.Model):
-#     pass
-#
-#
-# class ODMEmail(db.Model):
-#     pass
-#
-#
-# class ODMPicture(db.Model):
-#     body_keys = None
-#     attributes_keys = ["PictureFileName", "ImageType"]
-#
-#
-# class ODMPager(db.Model):
-#     pass
-#
-#
-# class ODMFax(db.Model):
-#     pass
-#
-#
-# class ODMPhone(db.Model):
-#     pass
-#
-#
-# class ODMLocationRef(db.Model):
-#     body_keys = None
-#     attributes_keys = ["LocationOID"]
-#
-#
-# class ODMCertificate(db.Model):
-#     pass
-#
-#
-# class ODMLocation(db.Model):
-#     body_keys = ["MetaDataVersionRef"]
-#     attributes_keys = ["OID", "Name", "LocationType"]
-#
-#
-# class ODMMetaDataVersionRef(db.Model):
-#     body_keys = None
-#     attributes_keys = ["StudyOID", "MetaDataVersionOID", "EffectiveDate"]
-#
-#
-# class ODMSignatureDef(db.Model):
-#     body_keys = ["Meaning", "LegalReason"]
-#     attributes_keys = ["OID", "Methodology"]
-#
-#
-# class ODMMeaning(db.Model):
-#     pass
-#
-#
-# class ODMLegalReason(db.Model):
-#     pass
-#
-#
-# class ODMReferenceData(db.Model):
-#     body_keys = ["ItemGroupData", "AuditRecords", "Signatures", "Annotations"]
-#     attributes_keys = ["StudyOID", "MetaDataVersionOID"]
-#
-#
-# class ODMClinicalData(db.Model):
-#     body_keys = ["SubjectData", "AuditRecords", "Signatures", "Annotations"]
-#     attributes_keys = ["StudyOID", "MetaDataVersionOID"]
-#
-#
-# class ODMSubjectData(db.Model):
-#
-#     body_keys = ["SubjectData", "AuditRecords", "Signatures", "Annotation", "StudyEventData"]
-#     attributes_keys = ["StudyOID", "MetaDataVersionOID"]
-#
-#
-# class ODMStudyEventData(db.Model):
-#     body_keys = ["AuditRecords", "Signatures", "Annotation", "FormData"]
-#     attributes_keys = ["StudyEventOID", "StudyEventRepeatKey", "TransactionType"]
-#
-#
-# class ODMFormData(db.Model):
-#     body_keys = ["AuditRecords", "Signatures", "ArchiveLayoutRef", "Annotation", "ItemGroupData"]
-#     attributes_keys = ["FormOID", "FormRepeatKey", "TransactionType"]
-#
-#
-# class ODMItemGroupData(db.Model):
-#     body_keys = ["AuditRecords", "Signatures", "ArchiveLayoutRef", "Annotation", "ItemData"]
-#     attributes_keys = ["FormOID", "FormRepeatKey", "TransactionType"]
-#
-#
-# class ODMItemData(db.Model):
-#     body_keys = ["AuditRecords", "Signatures", "MeasurementUnitRef", "Annotation"]
-#     attributes_keys = ["ItemOID", "TransactionType", "Value", "IsNull"]
-#
-#
-# class ODMArchiveLayoutRef(db.Model):
-#     body_keys = None
-#     attributes_keys = ["ArchiveLayoutOID"]
-#
-#
-# class ODMAuditRecord(db.Model):
-#     body_keys = ['UserRef', "LocationRef", "DateTimeStamp", "ReasonForChange", "SourceID"]
-#     attributes_keys = ["EditPoint", "UserImputationMehtod", "ID"]
-#
-#
-# class ODMUserRef(db.Model):
-#     body_keys = None
-#     attributes_keys = ["UserOID"]
-#
-#
-# class ODMDateTimeStamp(db.Model):
-#     pass
-#
-#
-# class ODMReasonForChange(db.Model):
-#     pass
-#
-#
-# class ODMSourceID(db.Model):
-#     pass
-#
-#
-# class ODMSignature(db.Model):
-#     body_keys = ["UserRef", "LocationRef", "SignatureRef", "DateTimeStamp"]
-#     attributes_keys = ["ID"]
-#
-#
-# class ODMSignatureRef(db.Model):
-#     body_keys = None
-#     attributes_keys = ["SignatureOID"]
-#
-#
-# class ODMAnnotation(db.Model):
-#     body_keys = ["Comment", "Flag"]
-#     attributes_keys = ["SeqNum", "TransactionType", "ID"]
-#
-#
-# class ODMComment(db.Model):
-#     body_keys = []
-#     attributes_keys = ["SponsorOrSite"]
-#
-#
-# class ODMFlag(db.Model):
-#     body_keys = ["FlagValue", "FlagType"]
-#     attributes_keys = []
-#
-#
-# class ODMFlagValue(db.Model):
-#     body_keys = []
-#     attributes_keys = ["CodeListOID"]
-#
-#
-# class ODMFlagType(db.Model):
-#     body_keys = []
-#     attributes_keys = ["CodeListOID"]
-#
-#
-# class ODMInvestigatorRef(db.Model):
-#     body_keys = None
-#     attributes_keys = ["UserOID"]
-#
-#
-# class ODMSiteRef(db.Model):
-#     body_keys = None
-#     attributes_keys = ["LocationOID"]
-#
-#
-# class ODMAuditRecords(db.Model):
-#     body_keys = ['AuditRecord']
-#     attributes_keys = []
-#
-#
-# class ODMSignatures(db.Model):
-#     body_keys = ['Signature']
-#     attributes_keys = []
-#
-#
-# class ODMAnnotations(db.Model):
-#     body_keys = ['Annotation']
-#     attributes_keys = []
-#
-#
-# class ODMAssociations(db.Model):
-#     body_keys = ['KeySet', "Annotation"]
-#     attributes_keys = ["StudyOID", "MetaDataVersionOID"]
-#
-#
-# class ODMKeySet(db.Model):
-#     body_keys = None
-#     attributes_keys = ["StudyOID", "StudyKey", "StudyEventOID", "StudyEventRepeatKey", "FormOID",
-#                        "FormRepeatKey", "ItemGroupOID", "ItemGroupRepeatKey", "ItemOID"]
-#
-#
-# class ODMSignature(db.Model):
-#     body_keys = ["SignedInfo", "SignatureValue", "KeyInfo", "Object"]
-#     attributes_keys = ["xmlns", "Id"]
+class AdminData(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    # Parent Variables
+    ODM = db.Column(db.Integer, db.ForeignKey('ODM.id'), nullable=False)
+
+    # Child Variables
+    User = db.relationship('User', backref='AdminData', lazy=True)
+    Location = db.relationship('Location', backref='AdminData', lazy=True)
+    SignatureDef = db.relationship('SignatureDef', backref='AdminData', lazy=True)
+
+    # Attribute Variables
+    StudyOID = db.Column(db.String(128))
+
+
+class User(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    # Parent Variable
+    AdminData = db.Column(db.Integer, db.ForeignKey('admin_data.id'), nullable=False)
+
+    # Child Variable
+    LoginName = db.relationship('LoginName', backref='User', lazy=True)
+    DisplayName = db.relationship('DisplayName', backref='User', lazy=True)
+    FullName = db.relationship('FullName', backref='User', lazy=True)
+    FirstName = db.relationship('FirstName', backref='User', lazy=True)
+    LastName = db.relationship('LastName', backref='User', lazy=True)
+    Organization = db.relationship('Organization', backref='User', lazy=True)
+    Address = db.relationship('Address', backref='User', lazy=True)
+    Email = db.relationship('Email', backref='User', lazy=True)
+    Picture = db.relationship('Picture', backref='User', lazy=True)
+    Pager = db.relationship('Pager', backref='User', lazy=True)
+    Fax = db.relationship('Fax', backref='User', lazy=True)
+    Phone = db.relationship('Phone', backref='User', lazy=True)
+    LocationRef = db.relationship('LocationRef', backref='User', lazy=True)
+    Certificate = db.relationship('Certificate', backref='User', lazy=True)
+
+    # Attribute Variable
+    OID = db.Column(db.String(128), unique=True, nullable=False)
+    UserType = db.Column(db.String(50))
+
+
+class ODMLoginName(db.Model):
+    pass
+
+
+class ODMDisplayName(db.Model):
+    pass
+
+
+class ODMFullName(db.Model):
+    pass
+
+
+class ODMFirstName(db.Model):
+    pass
+
+
+class ODMLastName(db.Model):
+    pass
+
+
+class ODMOrganization(db.Model):
+    pass
+
+
+class ODMAddress(db.Model):
+    body_keys = ["StreetName", "City", "StateProv", "Country", "PostalCode", "OtherText"]
+    attributes_keys = []
+
+
+class ODMStreetName(db.Model):
+    pass
+
+
+class ODMCity(db.Model):
+    pass
+
+
+class ODMStateProv(db.Model):
+    pass
+
+
+class ODMCountry(db.Model):
+    pass
+
+
+class ODMPostalCode(db.Model):
+    pass
+
+
+class ODMOtherText(db.Model):
+    pass
+
+
+class ODMEmail(db.Model):
+    pass
+
+
+class ODMPicture(db.Model):
+    body_keys = None
+    attributes_keys = ["PictureFileName", "ImageType"]
+
+
+class ODMPager(db.Model):
+    pass
+
+
+class ODMFax(db.Model):
+    pass
+
+
+class ODMPhone(db.Model):
+    pass
+
+
+class ODMLocationRef(db.Model):
+    body_keys = None
+    attributes_keys = ["LocationOID"]
+
+
+class ODMCertificate(db.Model):
+    pass
+
+
+class ODMLocation(db.Model):
+    body_keys = ["MetaDataVersionRef"]
+    attributes_keys = ["OID", "Name", "LocationType"]
+
+
+class ODMMetaDataVersionRef(db.Model):
+    body_keys = None
+    attributes_keys = ["StudyOID", "MetaDataVersionOID", "EffectiveDate"]
+
+
+class ODMSignatureDef(db.Model):
+    body_keys = ["Meaning", "LegalReason"]
+    attributes_keys = ["OID", "Methodology"]
+
+
+class ODMMeaning(db.Model):
+    pass
+
+
+class ODMLegalReason(db.Model):
+    pass
+
+
+class ODMReferenceData(db.Model):
+    body_keys = ["ItemGroupData", "AuditRecords", "Signatures", "Annotations"]
+    attributes_keys = ["StudyOID", "MetaDataVersionOID"]
+
+
+class ODMClinicalData(db.Model):
+    body_keys = ["SubjectData", "AuditRecords", "Signatures", "Annotations"]
+    attributes_keys = ["StudyOID", "MetaDataVersionOID"]
+
+
+class ODMSubjectData(db.Model):
+
+    body_keys = ["SubjectData", "AuditRecords", "Signatures", "Annotation", "StudyEventData"]
+    attributes_keys = ["StudyOID", "MetaDataVersionOID"]
+
+
+class ODMStudyEventData(db.Model):
+    body_keys = ["AuditRecords", "Signatures", "Annotation", "FormData"]
+    attributes_keys = ["StudyEventOID", "StudyEventRepeatKey", "TransactionType"]
+
+
+class ODMFormData(db.Model):
+    body_keys = ["AuditRecords", "Signatures", "ArchiveLayoutRef", "Annotation", "ItemGroupData"]
+    attributes_keys = ["FormOID", "FormRepeatKey", "TransactionType"]
+
+
+class ODMItemGroupData(db.Model):
+    body_keys = ["AuditRecords", "Signatures", "ArchiveLayoutRef", "Annotation", "ItemData"]
+    attributes_keys = ["FormOID", "FormRepeatKey", "TransactionType"]
+
+
+class ODMItemData(db.Model):
+    body_keys = ["AuditRecords", "Signatures", "MeasurementUnitRef", "Annotation"]
+    attributes_keys = ["ItemOID", "TransactionType", "Value", "IsNull"]
+
+
+class ODMArchiveLayoutRef(db.Model):
+    body_keys = None
+    attributes_keys = ["ArchiveLayoutOID"]
+
+
+class ODMAuditRecord(db.Model):
+    body_keys = ['UserRef', "LocationRef", "DateTimeStamp", "ReasonForChange", "SourceID"]
+    attributes_keys = ["EditPoint", "UserImputationMehtod", "ID"]
+
+
+class ODMUserRef(db.Model):
+    body_keys = None
+    attributes_keys = ["UserOID"]
+
+
+class ODMDateTimeStamp(db.Model):
+    pass
+
+
+class ODMReasonForChange(db.Model):
+    pass
+
+
+class ODMSourceID(db.Model):
+    pass
+
+
+class ODMSignature(db.Model):
+    body_keys = ["UserRef", "LocationRef", "SignatureRef", "DateTimeStamp"]
+    attributes_keys = ["ID"]
+
+
+class ODMSignatureRef(db.Model):
+    body_keys = None
+    attributes_keys = ["SignatureOID"]
+
+
+class ODMAnnotation(db.Model):
+    body_keys = ["Comment", "Flag"]
+    attributes_keys = ["SeqNum", "TransactionType", "ID"]
+
+
+class ODMComment(db.Model):
+    body_keys = []
+    attributes_keys = ["SponsorOrSite"]
+
+
+class ODMFlag(db.Model):
+    body_keys = ["FlagValue", "FlagType"]
+    attributes_keys = []
+
+
+class ODMFlagValue(db.Model):
+    body_keys = []
+    attributes_keys = ["CodeListOID"]
+
+
+class ODMFlagType(db.Model):
+    body_keys = []
+    attributes_keys = ["CodeListOID"]
+
+
+class ODMInvestigatorRef(db.Model):
+    body_keys = None
+    attributes_keys = ["UserOID"]
+
+
+class ODMSiteRef(db.Model):
+    body_keys = None
+    attributes_keys = ["LocationOID"]
+
+
+class ODMAuditRecords(db.Model):
+    body_keys = ['AuditRecord']
+    attributes_keys = []
+
+
+class ODMSignatures(db.Model):
+    body_keys = ['Signature']
+    attributes_keys = []
+
+
+class ODMAnnotations(db.Model):
+    body_keys = ['Annotation']
+    attributes_keys = []
+
+
+class ODMAssociations(db.Model):
+    body_keys = ['KeySet', "Annotation"]
+    attributes_keys = ["StudyOID", "MetaDataVersionOID"]
+
+
+class ODMKeySet(db.Model):
+    body_keys = None
+    attributes_keys = ["StudyOID", "StudyKey", "StudyEventOID", "StudyEventRepeatKey", "FormOID",
+                       "FormRepeatKey", "ItemGroupOID", "ItemGroupRepeatKey", "ItemOID"]
+
+
+class ODMSignature(db.Model):
+    body_keys = ["SignedInfo", "SignatureValue", "KeyInfo", "Object"]
+    attributes_keys = ["xmlns", "Id"]
 
 
 # define xml extension
